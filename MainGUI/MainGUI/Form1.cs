@@ -10,6 +10,8 @@ namespace MainGUI
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern string SendMessage(int hWnd, int msg, string wParam, IntPtr lParam);
         [DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool IsWow64Process(
@@ -23,8 +25,9 @@ namespace MainGUI
         private string OS = IsWow64() ? "64" : "32";
         private string hashcatLoc = "";
         private string hashcatFile = "";
+        private bool closing = false;
         private string zipFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\7za.exe";
-
+        Process p = new Process();
         public Form1()
         {
             InitializeComponent();
@@ -75,6 +78,8 @@ namespace MainGUI
             {
                 File.WriteAllBytes(zipFile, Resources._7za);
             }
+            metroComboBox1.SelectedIndex = 0;
+            metroComboBox2.SelectedIndex = 1;
         }
         private bool HashcatLoaded()
         {
@@ -113,6 +118,22 @@ namespace MainGUI
                 MessageBox.Show("Choose a hashfile!");
                 return;
             }
+
+            if (metroButton1.Text == "Crack it!")
+            {
+                metroButton1.Text = "Stop";
+            }
+            else
+            {
+                p.Kill();
+                metroLabel6.Text = "";
+                metroButton1.Text = "Crack it!";
+                return;
+            }
+            Core.RunThread(RunCrack);
+        }
+        private void RunCrack()
+        {
             if (!Directory.Exists(hashcatLoc + "cracked"))
             {
                 Directory.CreateDirectory(hashcatLoc + "cracked");
@@ -129,21 +150,43 @@ namespace MainGUI
             switch (attackMode)
             {
                 case "3":
-                    Process p = new Process();
+
                     ProcessStartInfo psi = new ProcessStartInfo();
                     psi.FileName = hashcatFile;
                     psi.Arguments = " -m " + hashType + " -a " + attackMode + " -i --increment-min " + BruteforceMinUpDown.Value.ToString() + " --increment-max " + BruteforceMaxUpDown.Value.ToString() + " -o " + hashcatLoc + "cracked/" + timestamp + ".cracked " + HashfileTextbox.Text;
                     p.StartInfo = psi;
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.RedirectStandardInput = true;
+                    p.StartInfo.CreateNoWindow = true;
                     p.Start();
-                    p.WaitForExit();
-                    if (File.Exists(hashcatLoc + "cracked\\" + timestamp + ".cracked"))
+                    StreamWriter inputWriter = p.StandardInput;
+
+                    while (!p.StandardOutput.EndOfStream)
                     {
-                        richTextBox1.Text = File.ReadAllText(hashcatLoc + "cracked\\" + timestamp + ".cracked");
-                        MessageBox.Show("Cracked");
+                        string standard_output = p.StandardOutput.ReadLine();
+                        if (standard_output.StartsWith("Speed"))
+                        {
+                            Invoker.SetText(metroLabel6, "Speed: " + Core.StringBetween(": ", " (", standard_output));
+                        }
+                        else if (standard_output.StartsWith("Guess.Mask"))
+                        {
+                            Invoker.SetText(metroLabel7, "Cracking length: " + Core.StringBetween("[", "]", standard_output));
+                        }
                     }
-                    else
+
+                    p.WaitForExit();
+                    if (!closing)
                     {
-                        MessageBox.Show("NOT CRACKED");
+                        if (File.Exists(hashcatLoc + "cracked\\" + timestamp + ".cracked"))
+                        {
+                            Invoker.SetText(richTextBox1, File.ReadAllText(hashcatLoc + "cracked\\" + timestamp + ".cracked"));
+                            MessageBox.Show("Cracked" + Environment.NewLine);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NOT CRACKED");
+                        }
                     }
                     break;
             }
@@ -193,6 +236,12 @@ namespace MainGUI
             {
                 HashfileTextbox.Text = opn.FileName;
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closing = true;
+            Core.StopProcesses("hashcat" + OS);
         }
     }
 }

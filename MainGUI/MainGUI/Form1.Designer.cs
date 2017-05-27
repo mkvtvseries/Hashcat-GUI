@@ -42,6 +42,8 @@
             this.HashfileTextbox = new System.Windows.Forms.TextBox();
             this.HashcatStatusLabel = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.BruteforceBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BruteforceMaxUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BruteforceMinUpDown)).BeginInit();
@@ -50,10 +52,10 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 82);
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(18, 78);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(88, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(95, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Attack Mode";
             // 
@@ -73,10 +75,10 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(38, 215);
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel2.Location = new System.Drawing.Point(34, 215);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(73, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(79, 19);
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Hash Type";
             // 
@@ -336,7 +338,7 @@
             this.BruteforceMaxUpDown.Size = new System.Drawing.Size(119, 20);
             this.BruteforceMaxUpDown.TabIndex = 0;
             this.BruteforceMaxUpDown.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -360,6 +362,7 @@
             // 
             // metroButton1
             // 
+            this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton1.Enabled = false;
             this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton1.Location = new System.Drawing.Point(515, 250);
@@ -373,17 +376,17 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(54, 294);
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel5.Location = new System.Drawing.Point(52, 250);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(57, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(63, 19);
             this.metroLabel5.TabIndex = 6;
             this.metroLabel5.Text = "Hashfile";
             // 
             // HashfileTextbox
             // 
             this.HashfileTextbox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HashfileTextbox.Location = new System.Drawing.Point(117, 294);
+            this.HashfileTextbox.Location = new System.Drawing.Point(119, 250);
             this.HashfileTextbox.Name = "HashfileTextbox";
             this.HashfileTextbox.ReadOnly = true;
             this.HashfileTextbox.Size = new System.Drawing.Size(392, 20);
@@ -394,7 +397,7 @@
             // HashcatStatusLabel
             // 
             this.HashcatStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HashcatStatusLabel.Location = new System.Drawing.Point(117, 250);
+            this.HashcatStatusLabel.Location = new System.Drawing.Point(119, 273);
             this.HashcatStatusLabel.Name = "HashcatStatusLabel";
             this.HashcatStatusLabel.Size = new System.Drawing.Size(392, 41);
             this.HashcatStatusLabel.TabIndex = 9;
@@ -403,18 +406,38 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(54, 320);
+            this.richTextBox1.Location = new System.Drawing.Point(54, 365);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(709, 83);
+            this.richTextBox1.Size = new System.Drawing.Size(709, 60);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel6.Location = new System.Drawing.Point(54, 316);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(709, 23);
+            this.metroLabel6.TabIndex = 11;
+            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel7.Location = new System.Drawing.Point(54, 339);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(709, 23);
+            this.metroLabel7.TabIndex = 11;
+            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 414);
+            this.ClientSize = new System.Drawing.Size(778, 430);
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HashcatStatusLabel);
             this.Controls.Add(this.HashfileTextbox);
@@ -429,6 +452,7 @@
             this.Name = "Form1";
             this.Resizable = false;
             this.Text = "Hashcat GUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.BruteforceBox.ResumeLayout(false);
             this.BruteforceBox.PerformLayout();
@@ -455,6 +479,8 @@
         private System.Windows.Forms.TextBox HashfileTextbox;
         private System.Windows.Forms.Label HashcatStatusLabel;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
     }
 }
 
