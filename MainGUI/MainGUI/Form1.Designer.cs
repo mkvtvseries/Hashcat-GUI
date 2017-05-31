@@ -44,6 +44,10 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.BruteforceBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BruteforceMaxUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BruteforceMinUpDown)).BeginInit();
@@ -53,7 +57,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(18, 78);
+            this.metroLabel1.Location = new System.Drawing.Point(18, 63);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(95, 19);
             this.metroLabel1.TabIndex = 0;
@@ -65,7 +69,7 @@
             this.metroComboBox1.ItemHeight = 23;
             this.metroComboBox1.Items.AddRange(new object[] {
             "Bruteforce (Mask Attack)"});
-            this.metroComboBox1.Location = new System.Drawing.Point(117, 78);
+            this.metroComboBox1.Location = new System.Drawing.Point(117, 63);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(646, 29);
             this.metroComboBox1.TabIndex = 1;
@@ -76,9 +80,9 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(34, 215);
+            this.metroLabel2.Location = new System.Drawing.Point(34, 200);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(78, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(79, 19);
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Hash Type";
             // 
@@ -285,7 +289,7 @@
             "vBulletin < v3.8.5",
             "vBulletin >= v3.8.5",
             "xt:Commerce"});
-            this.metroComboBox2.Location = new System.Drawing.Point(117, 215);
+            this.metroComboBox2.Location = new System.Drawing.Point(117, 200);
             this.metroComboBox2.Name = "metroComboBox2";
             this.metroComboBox2.Size = new System.Drawing.Size(646, 29);
             this.metroComboBox2.TabIndex = 3;
@@ -298,7 +302,7 @@
             this.BruteforceBox.Controls.Add(this.metroLabel3);
             this.BruteforceBox.Controls.Add(this.BruteforceMaxUpDown);
             this.BruteforceBox.Controls.Add(this.BruteforceMinUpDown);
-            this.BruteforceBox.Location = new System.Drawing.Point(117, 113);
+            this.BruteforceBox.Location = new System.Drawing.Point(117, 98);
             this.BruteforceBox.Name = "BruteforceBox";
             this.BruteforceBox.Size = new System.Drawing.Size(646, 96);
             this.BruteforceBox.TabIndex = 4;
@@ -363,9 +367,9 @@
             this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton1.Enabled = false;
             this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.Location = new System.Drawing.Point(515, 250);
+            this.metroButton1.Location = new System.Drawing.Point(515, 244);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(248, 64);
+            this.metroButton1.Size = new System.Drawing.Size(248, 90);
             this.metroButton1.TabIndex = 5;
             this.metroButton1.Text = "Crack it!";
             this.metroButton1.UseSelectable = true;
@@ -375,7 +379,7 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel5.Location = new System.Drawing.Point(52, 250);
+            this.metroLabel5.Location = new System.Drawing.Point(52, 270);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(63, 19);
             this.metroLabel5.TabIndex = 6;
@@ -384,10 +388,10 @@
             // HashfileTextbox
             // 
             this.HashfileTextbox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HashfileTextbox.Location = new System.Drawing.Point(119, 250);
+            this.HashfileTextbox.Location = new System.Drawing.Point(144, 270);
             this.HashfileTextbox.Name = "HashfileTextbox";
             this.HashfileTextbox.ReadOnly = true;
-            this.HashfileTextbox.Size = new System.Drawing.Size(392, 20);
+            this.HashfileTextbox.Size = new System.Drawing.Size(365, 20);
             this.HashfileTextbox.TabIndex = 8;
             this.HashfileTextbox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.HashfileTextbox_MouseClick);
             this.HashfileTextbox.TextChanged += new System.EventHandler(this.HashfileTextbox_TextChanged);
@@ -395,7 +399,7 @@
             // HashcatStatusLabel
             // 
             this.HashcatStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HashcatStatusLabel.Location = new System.Drawing.Point(119, 273);
+            this.HashcatStatusLabel.Location = new System.Drawing.Point(119, 293);
             this.HashcatStatusLabel.Name = "HashcatStatusLabel";
             this.HashcatStatusLabel.Size = new System.Drawing.Size(392, 41);
             this.HashcatStatusLabel.TabIndex = 9;
@@ -404,7 +408,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(54, 365);
+            this.richTextBox1.Location = new System.Drawing.Point(54, 385);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(709, 60);
@@ -414,7 +418,7 @@
             // metroLabel6
             // 
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(54, 316);
+            this.metroLabel6.Location = new System.Drawing.Point(54, 336);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(709, 23);
             this.metroLabel6.TabIndex = 11;
@@ -423,22 +427,64 @@
             // metroLabel7
             // 
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(54, 339);
+            this.metroLabel7.Location = new System.Drawing.Point(54, 359);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(709, 23);
             this.metroLabel7.TabIndex = 11;
             this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(144, 244);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(365, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel8.Location = new System.Drawing.Point(73, 244);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(42, 19);
+            this.metroLabel8.TabIndex = 6;
+            this.metroLabel8.Text = "Hash";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(124, 247);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(14, 13);
+            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(124, 273);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(14, 13);
+            this.radioButton2.TabIndex = 13;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 430);
+            this.ClientSize = new System.Drawing.Size(778, 456);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HashcatStatusLabel);
             this.Controls.Add(this.HashfileTextbox);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.BruteforceBox);
@@ -479,6 +525,10 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.TextBox textBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 

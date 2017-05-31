@@ -318,9 +318,13 @@ namespace MainGUI
             {
                 return;
             }
-            if (HashfileTextbox.Text =="")
+            if (radioButton2.Checked && HashfileTextbox.Text.Trim(' ') == "")
             {
                 MessageBox.Show("Choose a hashfile!");
+                return;
+            }else if(radioButton1.Checked && textBox1.Text.Trim(' ') == "")
+            {
+                MessageBox.Show("Enter a valid hash!");
                 return;
             }
 
@@ -365,7 +369,8 @@ namespace MainGUI
 
                     ProcessStartInfo psi = new ProcessStartInfo();
                     psi.FileName = hashcatFile;
-                    psi.Arguments = " -m " + hashType +" -a " + attackMode +" -i --increment-min " + BruteforceMinUpDown.Value.ToString() +" --increment-max " + BruteforceMaxUpDown.Value.ToString() +" -o " + hashcatLoc +"cracked/" + timestamp +".cracked " + HashfileTextbox.Text;
+                    string hash = radioButton1.Checked ? textBox1.Text : HashfileTextbox.Text;
+                    psi.Arguments = " -m " + hashType +" -a " + attackMode +" -i --increment-min " + BruteforceMinUpDown.Value.ToString() +" --increment-max " + BruteforceMaxUpDown.Value.ToString() +" -o " + hashcatLoc +"cracked/" + timestamp +".cracked " + hash;
                     p.StartInfo = psi;
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.RedirectStandardOutput = true;
@@ -373,10 +378,12 @@ namespace MainGUI
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
                     StreamWriter inputWriter = p.StandardInput;
-
+                    Invoker.SetText(metroLabel6, "No speed data available...");
+                    Invoker.SetText(metroLabel7, "");
                     while (!p.StandardOutput.EndOfStream)
                     {
                         string standard_output = p.StandardOutput.ReadLine();
+
                         if (standard_output.StartsWith("Speed"))
                         {
                             Invoker.SetText(metroLabel6,"Speed:" + Core.StringBetween(":"," (", standard_output));
