@@ -30,6 +30,37 @@ namespace MainGUI
                 p.Kill();
             }
         }
+        public static Thread RunThread_Download(string url, string path, Thread runAfter = null)
+        {
+            ManualResetEvent syncEvent = new ManualResetEvent(false);
+            double unixMilli = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds;
+            Thread newThread = new Thread(
+        () =>
+        {
+            syncEvent.Set();
+            using (client = new WebClient()){
+                client.DownloadFileAsync(new Uri(url), path);
+                client.DownloadFileCompleted += delegate{
+                    if (runAfter != null)
+                    {
+                        runAfter.Start();
+                    }
+                };
+            };
+            syncEvent.WaitOne();
+            threadPool.Remove(unixMilli);
+        }
+
+    );
+            if (threadPool.ContainsKey(unixMilli))
+            {
+                Thread.Sleep(5);
+                threadPool.Add(unixMilli, newThread);
+            }
+
+            newThread.Start();
+            return newThread;
+        }
         public static Thread RunThread(Action methodName)
         {
             ManualResetEvent syncEvent = new ManualResetEvent(false);

@@ -94,5 +94,8 @@
   <ItemGroup>
     <None Include="Resources\7za.exe" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

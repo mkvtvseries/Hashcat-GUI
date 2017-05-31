@@ -22,7 +22,10 @@ namespace MainGUI
         //NumericUpDown
         private delegate void _SetNumericValue(NumericUpDown ctrl, decimal val);
 
+        //Controls
         private delegate void _SetText(Control cntrl, string msg, string clr);
+        private delegate void _ChangeEnabled(Control cntrl, bool state);
+        private delegate void _ChangeCursor(Control cntrl, Cursor state);
 
         //Progressbar
         private delegate void _SetPrgbValue(ProgressBar prgb, int value, Mode mode);
@@ -32,6 +35,28 @@ namespace MainGUI
         private delegate void _ClearListView(ListView list);
         private delegate void _UpdateListView(ListView list, bool start = true);
 
+        public static void ChangeEnabled(Control cntrl, bool state)
+        {
+            if (cntrl.InvokeRequired)
+            {
+                cntrl.Invoke(new _ChangeEnabled(ChangeEnabled), cntrl, state);
+            }
+            else
+            {
+                cntrl.Enabled = state;
+            }
+        }
+        public static void ChangeCursor(Control cntrl, Cursor state)
+        {
+            if (cntrl.InvokeRequired)
+            {
+                cntrl.Invoke(new _ChangeCursor(ChangeCursor), cntrl, state);
+            }
+            else
+            {
+                cntrl.Cursor = state;
+            }
+        }
 
         public static void ChangeVisibilityForm(Form frm, bool state)
         {
